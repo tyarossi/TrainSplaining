@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const StopSchema = new mongoose.Schema({
   mbtaId: {
     type: String,

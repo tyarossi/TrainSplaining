@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//trip schema/model
+//trip schema/model 
 const newTripSchema = new mongoose.Schema(
   {
     tripID: {
