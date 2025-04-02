@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/9e6e8374-03a5-430b-9680-fabecfa3f198)
+
+
 # mern-user-skeleton
 This MERN stack implementation creates a small web application that lets users register, login, view a home page, and logout. 
 
