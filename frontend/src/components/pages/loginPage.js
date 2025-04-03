@@ -1,3 +1,4 @@
+// THIS PAGE WILL BE THE FIRST PAGE USERS SEE
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -5,8 +6,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import getUserInfo from "../../utilities/decodeJwt";
 
-const PRIMARY_COLOR = "#cc5c99";
-const SECONDARY_COLOR = '#0c0c1f'
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#F5F5F5'
 const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/user/login`;
 
 const Login = () => {
@@ -40,7 +41,7 @@ const Login = () => {
     setUser(obj)
 
     if (light) {
-      setBgColor("white");
+      setBgColor("#202020");
       setBgText('Dark mode')
     } else {
       setBgColor(SECONDARY_COLOR);
@@ -131,6 +132,15 @@ const Login = () => {
                   className='mt-2'
                 >
                   Log In
+                </Button>
+                <Button // THIS BUTTON WILL GO TO SCHEDULE PAGE
+                  variant="primary"
+                  type="submit"
+                  onClick={handleSubmit}
+                  style={buttonStyling}
+                  className='mt-2'
+                >
+                  Log In as Guest
                 </Button>
               </Form>
             </div>
