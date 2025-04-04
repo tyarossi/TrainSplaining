@@ -24,19 +24,21 @@ const App = () => {
     setUser(getUserInfo());
   }, []);
 
-  return (
-    <>
-      <Navbar />
-      <UserContext.Provider value={user}>
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
+  return ( 
+    <> 
+      <Navbar /> 
+      <UserContext.Provider value={user}> 
+        <Routes> 
+          <Route exact path="/" element={<Login />} />
           <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
+          <Route path="/DatabaseConnectionTest" element={<LandingPage />} />
+
         </Routes>
       </UserContext.Provider>
-    </>
+    </>  
   );
 };
 
