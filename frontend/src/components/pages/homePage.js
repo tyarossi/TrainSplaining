@@ -38,9 +38,6 @@ const HomePage = () => {
                     <p className="email">{email}</p>
                 </div>
             </div>
-            <button onClick={(e) => handleClick(e)}>
-                Log Out
-            </button>
         </>
     );
 };

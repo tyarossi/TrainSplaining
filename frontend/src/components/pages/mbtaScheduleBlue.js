@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
-function Stops(){
+function BlueStops(){
     const [Stops, setStops] = useState([]);
 
     useEffect(()=> { 
@@ -44,4 +44,4 @@ function Stops(){
         )
     
     }
-export default Stops;
+export default BlueStops;
