@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import getUserInfo from '../utilities/decodeJwt';
-import Container from 'react-bootstrap/Container';
+import {Container, Button} from 'react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 import ReactNavbar from 'react-bootstrap/Navbar';
 
@@ -23,6 +25,23 @@ export default function Navbar() {
     <ReactNavbar bg="dark" variant="dark">
     <Container>
       <Nav className="me-auto">
+        <NavDropdown title="Schedule" id="basic-nav-dropdown">
+          <Dropdown>
+            <Dropdown.Toggle variant="light" id="dropdown-basic" style={{width: '100%'}}>
+              Schedules
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Blue Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Red Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Green Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-4">Orange Line</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Station Tickets</NavDropdown.Item>
+        </NavDropdown>
         <Nav.Link href="/">Start</Nav.Link>
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/privateUserProfile">Profile</Nav.Link>
