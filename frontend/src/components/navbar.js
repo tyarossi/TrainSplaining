@@ -32,10 +32,10 @@ export default function Navbar() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="/mbtaSchedule?Blue">Blue Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaSchedule?Red">Red Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaSchedule?Green">Green Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaSchedule?Orange">Orange Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-1">Blue Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Red Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Green Line</Dropdown.Item>
+              <Dropdown.Item href="#/action-4">Orange Line</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <NavDropdown.Divider />
