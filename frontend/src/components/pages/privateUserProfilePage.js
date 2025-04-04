@@ -33,7 +33,42 @@ const PrivateUserProfile = () => {
   return (
     <div class="container">
       <div class="col-md-12 text-center">
-        <h1>{user && user.username}</h1>
+        <h3>User Profile</h3>
+        <div class="col-sm-12 text-left">
+          <h6>Username: {user.username}</h6>
+          <h6>Email: {user.email}</h6>
+        </div>
+        <div class="col-md-12 text-center">
+            <h3>Payment Info</h3>
+        </div>
+        <div class="col-sm-12 text-left">
+          {/* atm, we're lacking the proper variables for this object, treat the following info as placeholders until then */}
+          <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ">Add new payment info</a>
+          <h4>Credit Card Info</h4>
+          <h6>Card Number: **** **** **** 1234</h6> 
+          <h6>Expiration Date: 06/04</h6>
+          <h6>Address: 352 Lafayette St, Salem, MA 01970</h6>
+          <Button className="deleteCardBtn" variant="danger">Delete Card</Button>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>  
+              <Modal.Title>Delete Card</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to delete this card?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Yes
+              </Button>
+            </Modal.Footer> 
+          </Modal>
+        </div>
         <div class="col-md-12 text-center">
           <>
             <Button className="me-2" onClick={handleShow}>
