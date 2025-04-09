@@ -56,7 +56,7 @@ const Login = () => {
       const { accessToken } = res;
       //store token in localStorage
       localStorage.setItem("accessToken", accessToken);
-      navigate("/mbtaScheduleOrangeLine");
+      navigate("/mbtaSchedule");
     } catch (error) {
       if (
         error.response &&
@@ -69,7 +69,7 @@ const Login = () => {
   };
 
   if(user) {
-    navigate('/mbtaScheduleOrangeLine')
+    navigate('/mbtaSchedule')
     return
   }
 

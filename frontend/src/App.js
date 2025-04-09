@@ -30,7 +30,7 @@ const App = () => {
       <UserContext.Provider value={user}> 
         <Routes> 
           <Route exact path="/" element={<Login />} />
-          <Route exact path="/mbtaScheduleOrangeLine" element={<OrangeStops />} />
+          <Route exact path="/mbtaSchedule" element={<Stops />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/mbtaSchedule" element={<Stops />} />
