@@ -43,7 +43,6 @@ export default function Navbar() {
           <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Station Tickets</NavDropdown.Item>
           <NavDropdown.Item href="/">Start</NavDropdown.Item>
-          <NavDropdown.Item href="/home">Home</NavDropdown.Item>
           <NavDropdown.Item href="/privateUserProfile">Profile</NavDropdown.Item>
           <NavDropdown.Item href="/mbtaAlerts">Alerts</NavDropdown.Item>
         </NavDropdown>
