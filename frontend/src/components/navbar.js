@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 import ReactNavbar from 'react-bootstrap/Navbar';
+import { TfiAlignJustify } from "react-icons/tfi";
 
 
 // Here, we display our Navbar
@@ -28,7 +29,7 @@ export default function Navbar() {
         <NavDropdown title="Schedule" id="basic-nav-dropdown">
           <Dropdown>
             <Dropdown.Toggle variant="light" id="dropdown-basic" style={{width: '100%'}}>
-              Schedules
+            <TfiAlignJustify />
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

@@ -30,7 +30,7 @@ const App = () => {
 
   return ( 
     <> 
-      <Navbar /> 
+      <Navbar style={{ align: "left" }} /> 
       <UserContext.Provider value={user}> 
         <Routes> 
           <Route exact path="/" element={<Login />} />
