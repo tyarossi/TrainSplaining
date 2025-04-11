@@ -25,29 +25,14 @@ export default function Navbar() {
   return (
     <ReactNavbar bg="dark" variant="dark">
     <Container>
-      <Nav className="me-auto" style={{paddingRight: '10px'}}>
-        <NavDropdown title="Schedule" id="basic-nav-dropdown">
-          <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic" style={{width: '100%'}}>
-            <TfiAlignJustify />
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="/mbtaScheduleBlueLine">Blue Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaScheduleRedLine">Red Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaScheduleGreenLine">Green Line</Dropdown.Item>
-              <Dropdown.Item href="/mbtaScheduleOrangeLine">Orange Line</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <NavDropdown.Divider />
+      <Nav className="me-auto">
+        <NavDropdown title={<TfiAlignJustify size={30} />} >
           <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Station Tickets</NavDropdown.Item>
-          <NavDropdown.Item href="/">Start</NavDropdown.Item>
-          <NavDropdown.Item href="/home">Home</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Ticket Wallet</NavDropdown.Item>
+          <NavDropdown.Item href="/DatabaseConnectionTest">Schedule</NavDropdown.Item>
           <NavDropdown.Item href="/privateUserProfile">Profile</NavDropdown.Item>
-          <NavDropdown.Item href="/mbtaAlerts">Alerts</NavDropdown.Item>
+        {/* <Nav.Link href="/TailwindConnectionTest">Tailwind Connection Test</Nav.Link> */}
         </NavDropdown>
-        <Nav.Link href="/TailwindConnectionTest">Tailwind Connection Test</Nav.Link>
       </Nav>
     </Container>
   </ReactNavbar>
