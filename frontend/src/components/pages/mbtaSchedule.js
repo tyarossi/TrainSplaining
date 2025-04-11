@@ -3,6 +3,9 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#404040';
+
 function MBTASchedule(){
     const [Stops, setStops] = useState([]);
     const [selectedRoutes, setSelectedRoutes] = useState("Blue");

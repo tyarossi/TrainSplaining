@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#404040';
 
 function Alerts() {
   const [alerts, setAlerts] = useState([]);

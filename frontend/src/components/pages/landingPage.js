@@ -1,6 +1,9 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#404040';
+
 const Landingpage = () => {
     
     return (

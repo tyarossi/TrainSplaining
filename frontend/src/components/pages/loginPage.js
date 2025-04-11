@@ -7,7 +7,8 @@ import Form from "react-bootstrap/Form";
 import getUserInfo from "../../utilities/decodeJwt";
 
 const PRIMARY_COLOR = "#808080";
-const SECONDARY_COLOR = '#F5F5F5'
+const SECONDARY_COLOR = '#404040';
+const BUTTON_COLOR = '#80276C';
 const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/user/login`;
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [light, setLight] = useState(false);
   const [bgColor, setBgColor] = useState(SECONDARY_COLOR);
-  const [bgText, setBgText] = useState('Light Mode')
+  const [bgText, setBgText] = useState(PRIMARY_COLOR);
   const navigate = useNavigate();
 
   let labelStyling = {
@@ -26,9 +27,9 @@ const Login = () => {
   };
   let backgroundStyling = { background: bgColor };
   let buttonStyling = {
-    background: PRIMARY_COLOR,
+    background: BUTTON_COLOR,
     borderStyle: "none",
-    color: bgColor,
+    color: '#FFFFFF',
   };
 
   const handleChange = ({ currentTarget: input }) => {
@@ -39,14 +40,15 @@ const Login = () => {
 
     const obj = getUserInfo(user)
     setUser(obj)
-
-    if (light) {
-      setBgColor("#202020");
-      setBgText('Dark mode')
-    } else {
-      setBgColor(SECONDARY_COLOR);
-      setBgText('Light mode')
-    }
+    setBgColor(SECONDARY_COLOR);
+    setBgText(PRIMARY_COLOR);
+    //  if (light) {
+    //    setBgColor("#202020");
+    //    setBgText('Dark mode')
+    //  } else {
+    //    setBgColor(SECONDARY_COLOR);
+    //    setBgText('Light mode')
+    //  }
   }, [light]);
 
   const handleSubmit = async (e) => {
@@ -112,7 +114,7 @@ const Login = () => {
                     </span>
                   </Form.Text>
                 </Form.Group>
-                <div class="form-check form-switch">
+                {/* <div class="form-check form-switch">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -123,7 +125,7 @@ const Login = () => {
                     {bgText}
                   </label>
                 </div>
-                {error && <div style={labelStyling} className='pt-3'>{error}</div>}
+                {error && <div style={labelStyling} className='pt-3'>{error}</div>} */}
                 <Button
                   variant="primary"
                   type="submit"
