@@ -29,7 +29,7 @@ export default function Navbar() {
         <NavDropdown title={<TfiAlignJustify size={30} />} >
           <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Ticket Wallet</NavDropdown.Item>
-          <NavDropdown.Item href="/DatabaseConnectionTest">Schedule</NavDropdown.Item>
+          <NavDropdown.Item href="/mbtaSchedule">Schedule</NavDropdown.Item>
           <NavDropdown.Item href="/privateUserProfile">Profile</NavDropdown.Item>
         {/* <Nav.Link href="/TailwindConnect  ionTest">Tailwind Connection Test</Nav.Link> */}
         </NavDropdown>
