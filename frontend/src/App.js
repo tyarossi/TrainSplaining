@@ -7,14 +7,10 @@ import './index.css';
 // We import all the components we need in our app
 import Navbar from "./components/navbar";
 import LandingPage from "./components/pages/landingPage";
-import HomePage from "./components/pages/homePage";
 import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
-import BlueStops from "./components/pages/mbtaScheduleBlue";
-import GreenStops from "./components/pages/mbtaScheduleGreen";
-import RedStops from "./components/pages/mbtaScheduleRed";
-import OrangeStops from "./components/pages/mbtaScheduleOrange";
+import Stops from "./components/pages/mbtaSchedule";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
 
@@ -34,13 +30,10 @@ const App = () => {
       <UserContext.Provider value={user}> 
         <Routes> 
           <Route exact path="/" element={<Login />} />
-          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/mbtaSchedule" element={<Stops />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/mbtaScheduleBlueLine" element={<BlueStops />} />
-          <Route exact path="/mbtaScheduleRedLine" element={<RedStops />} />
-          <Route exact path="/mbtaScheduleGreenLine" element={<GreenStops />} />
-          <Route exact path="/mbtaScheduleOrangeLine" element={<OrangeStops />} />
+          <Route exact path="/mbtaSchedule" element={<Stops />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/DatabaseConnectionTest" element={<LandingPage />} />
 
