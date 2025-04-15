@@ -3,13 +3,59 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const PRIMARY_COLOR = "#808080";
-const SECONDARY_COLOR = '#404040';
+const PRIMARY_COLOR = "#D6D6D6"; //text
+const SECONDARY_COLOR = '#404040'; //background
+const BUTTON_COLOR = '#80276C';
+
 
 function MBTASchedule(){
     const [Stops, setStops] = useState([]);
     const [selectedRoutes, setSelectedRoutes] = useState("Blue");
     const [showGreenSubmenu, setShowGreenSubmenu] = useState(false);
+
+
+    let realStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: SECONDARY_COLOR,
+    };
+    let blueStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: "#003DA5",
+    };
+    let greenStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: "#00843D",
+    };
+    let redStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: "#DA291C",
+    };
+    let orangeStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: "#ED8B00",
+    };
+    let buttonStyling = {
+        background: BUTTON_COLOR,
+        borderStyle: "none",
+        color: '#FFFFFF',
+    };
+    let cardStyling = {
+        color: PRIMARY_COLOR,
+        fontWeight: "bold",
+        textDecoration: "none",
+        background: SECONDARY_COLOR,
+        width: "35rem",
+        };
 
     useEffect(()=> { 
         async function fetchData(route) {
@@ -32,31 +78,35 @@ function MBTASchedule(){
         }, [selectedRoutes]);
 
         return(
-            <div>
+            <div style={realStyling}>
                 {
-                    <Dropdown>
-                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <Dropdown style={realStyling}>
+                    <Dropdown.Toggle variant="primary" id="dropdown-basic" 
+                    style={buttonStyling}>
                         {selectedRoutes} Line
                     </Dropdown.Toggle>
     
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => setSelectedRoutes("Blue")}>Blue</Dropdown.Item>
+                    <Dropdown.Menu
+                    style={realStyling}>
+                        <Dropdown.Item onClick={() => setSelectedRoutes("Blue")}
+                            style={blueStyling}>Blue</Dropdown.Item>
                         <Dropdown.Item
                             onMouseEnter={() => setShowGreenSubmenu(true)}
                             onMouseLeave={() => setShowGreenSubmenu(false)}
+                            style={greenStyling}
                         >
                             Green
                             {showGreenSubmenu && (
-                                <Dropdown.Menu show>
-                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-B")}>Green-B</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-C")}>Green-C</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-D")}>Green-D</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-E")}>Green-E</Dropdown.Item>
+                                <Dropdown.Menu show style={realStyling}>
+                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-B")} style={greenStyling}>Green-B</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-C")} style={greenStyling}>Green-C</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-D")} style={greenStyling}>Green-D</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setSelectedRoutes("Green-E")} style={greenStyling}>Green-E</Dropdown.Item>
                                 </Dropdown.Menu>
                             )}
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setSelectedRoutes("Red")}>Red</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setSelectedRoutes("Orange")}>Orange</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedRoutes("Red")} style={redStyling}>Red</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedRoutes("Orange")} style={orangeStyling}>Orange</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
     
@@ -69,11 +119,11 @@ function MBTASchedule(){
                         outline
                         color = "success"
                         className ="mx-1 my-2"
-                        style = {{width: "35rem"}}
+                        style = {cardStyling}
                     >
-                        <Card.Body>
-                            <Card.Title>Line Arrival and Departure Times</Card.Title>
-                            <Card.Text>
+                        <Card.Body style={realStyling}>
+                            <Card.Title style={realStyling}>Line Arrival and Departure Times</Card.Title>
+                            <Card.Text style={realStyling}>
                                 Arrival: {stop.attributes.arrival_time || "Not Available"}<br/>
                                 Departure: {stop.attributes.departure_time || "Not Available"}
                             </Card.Text>
@@ -81,11 +131,11 @@ function MBTASchedule(){
                     </Card>
                 ))}
 
-                <h1>Stops</h1>
+                <h1 style={realStyling}>Stops</h1>
                 {Stops.map(stop => (
-                    <div key ={stop.id}>
-                        <h3>Drop Off Type: {stop.attributes.drop_off_type}</h3>
-                        <p>Stop Sequence: {stop.attributes.stop_sequence}</p>
+                    <div key ={stop.id} style={realStyling}>
+                        <h3 style={realStyling}>Drop Off Type: {stop.attributes.drop_off_type}</h3>
+                        <p style={realStyling}>Stop Sequence: {stop.attributes.stop_sequence}</p>
                     </div>
                 ))}
             </div>

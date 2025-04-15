@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import getUserInfo from "../../utilities/decodeJwt";
 
-const PRIMARY_COLOR = "#808080";
+const PRIMARY_COLOR = "#D6D6D6";
 const SECONDARY_COLOR = '#404040';
 const BUTTON_COLOR = '#80276C';
 
@@ -26,7 +26,12 @@ const PrivateUserProfile = () => {
     localStorage.clear();
     navigate("/");
   };
-
+  let testStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: bgColor,
+  };
   let labelStyling = {
     color: PRIMARY_COLOR,
     fontWeight: "bold",
@@ -54,7 +59,7 @@ const PrivateUserProfile = () => {
   if (!user) return (<div><h4>Log in to view this page.</h4></div>)
   return (
     <>
-      <section className="vh-100">
+      <section className="vh-100" style={testStyling}>
         <div class="container"
           style={backgroundStyling}>
           <div class="col-md-12 text-center"
@@ -75,7 +80,7 @@ const PrivateUserProfile = () => {
               <h6>Card Number: **** **** **** 1234</h6> 
               <h6>Expiration Date: 06/04</h6>
               <h6>Address: 352 Lafayette St, Salem, MA 01970</h6>
-              <Button className="deleteCardBtn" variant="danger">Delete Card</Button>
+              <Button className="deleteCardBtn" variant="danger" style={buttonStyling}>Delete Card</Button>
               <Modal
                 show={show}
                 onHide={handleClose}
@@ -87,10 +92,10 @@ const PrivateUserProfile = () => {
                 </Modal.Header>
                 <Modal.Body>Are you sure you want to delete this card?</Modal.Body>
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
+                  <Button variant="secondary" onClick={handleClose} style={buttonStyling}>
                     Close
                   </Button>
-                  <Button variant="primary" onClick={handleClose}>
+                  <Button variant="primary" onClick={handleClose} style={buttonStyling}>
                     Yes
                   </Button>
                 </Modal.Footer> 
@@ -100,7 +105,8 @@ const PrivateUserProfile = () => {
               <>
                 <Button 
                 className="me-2" 
-                onClick={handleShow}>
+                onClick={handleShow}
+                style={buttonStyling}>
                 
                   Log Out
                 </Button>
@@ -109,16 +115,22 @@ const PrivateUserProfile = () => {
                   onHide={handleClose}
                   backdrop="static"
                   keyboard={false}
+                  style={backgroundStyling}
                 >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Log Out</Modal.Title>
+                  <Modal.Header closeButton
+                  style={testStyling}>
+                    <Modal.Title 
+                    style={testStyling}
+                    >Log Out</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>Are you sure you want to Log Out?</Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                  <Modal.Body
+                  style={testStyling}>Are you sure you want to Log Out?</Modal.Body>
+                  <Modal.Footer
+                  style={testStyling}>
+                    <Button variant="secondary" onClick={handleClose} style={buttonStyling}>
                       Close
                     </Button>
-                    <Button variant="primary" onClick={handleLogout}>
+                    <Button variant="primary" onClick={handleLogout} style={buttonStyling}>
                       Yes
                     </Button>
                   </Modal.Footer>
