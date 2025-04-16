@@ -8,6 +8,9 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import getUserInfo from '../../utilities/decodeJwt';
 
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#404040';
+
 const EditUserPage = () =>{
 
   const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser`;

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getUserInfo from '../../utilities/decodeJwt';
 
+const PRIMARY_COLOR = "#808080";
+const SECONDARY_COLOR = '#404040';
+
 const HomePage = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();

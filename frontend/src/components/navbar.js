@@ -7,6 +7,9 @@ import Nav from 'react-bootstrap/Nav';
 import ReactNavbar from 'react-bootstrap/Navbar';
 import { TfiAlignJustify } from "react-icons/tfi";
 
+const PRIMARY_COLOR = "#D6D6D6";
+const SECONDARY_COLOR = '#404040';
+const BUTTON_COLOR = '#80276C';
 
 // Here, we display our Navbar
 export default function Navbar() {
@@ -15,6 +18,17 @@ export default function Navbar() {
   // eslint-disable-next-line
   const [user, setUser] = useState({})
 
+  let realStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: SECONDARY_COLOR,
+  };
+  let buttonStyling = {
+    background: BUTTON_COLOR,
+    borderStyle: "none",
+    color: '#FFFFFF',
+  };
   useEffect(() => {
   setUser(getUserInfo())
   }, [])
