@@ -37,14 +37,14 @@ export default function Navbar() {
   // we have an issue with getUserInfo() returning null after a few minutes
   // it seems.
   return (
-    <ReactNavbar style={realStyling}>
-    <Container style={buttonStyling}> 
-      <Nav className="me-auto" style={realStyling}>
-        <NavDropdown title={<TfiAlignJustify size={30} style={realStyling}/>} style={realStyling}>
-          <NavDropdown.Item href="/privateUserProfile" style={realStyling}>Purchase Tickets</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3" style={realStyling}>Ticket Wallet</NavDropdown.Item>
-          <NavDropdown.Item href="/mbtaSchedule" style={realStyling}>Schedule</NavDropdown.Item>
-          <NavDropdown.Item href="/privateUserProfile" style={realStyling}>Profile</NavDropdown.Item>
+    <ReactNavbar bg="dark" variant="dark">
+    <Container>
+      <Nav className="me-auto">
+        <NavDropdown title={<TfiAlignJustify size={30} />} >
+          <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
+          <NavDropdown.Item href="/wallet">Ticket Wallet</NavDropdown.Item>
+          <NavDropdown.Item href="/mbtaSchedule">Schedule</NavDropdown.Item>
+          <NavDropdown.Item href="/privateUserProfile">Profile</NavDropdown.Item>
         {/* <Nav.Link href="/TailwindConnect  ionTest">Tailwind Connection Test</Nav.Link> */}
         </NavDropdown>
       </Nav>

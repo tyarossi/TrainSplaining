@@ -10,6 +10,7 @@ import LandingPage from "./components/pages/landingPage";
 import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
 import PrivateUserProfile from "./components/pages/privateUserProfilePage";
+import wallet from "./components/pages/walletPage"
 import Stops from "./components/pages/mbtaSchedule";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
@@ -34,6 +35,7 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/mbtaSchedule" element={<Stops />} />
+          <Route exact path="/wallet" element={<wallet />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/DatabaseConnectionTest" element={<LandingPage />} />
 
