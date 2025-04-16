@@ -114,12 +114,14 @@ function MBTASchedule(){
                     >
                         Green
                         {showGreenSubmenu && (
-                            <Dropdown.Menu show style={realStyling}>
+                        <Dropdown>
+                            <Dropdown.Menu show align = "end" style={realStyling}>
                                 <Dropdown.Item onClick={() => setSelectedRoutes("Green-B")} style={greenStyling}>Green-B</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setSelectedRoutes("Green-C")} style={greenStyling}>Green-C</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setSelectedRoutes("Green-D")} style={greenStyling}>Green-D</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setSelectedRoutes("Green-E")} style={greenStyling}>Green-E</Dropdown.Item>
                             </Dropdown.Menu>
+                        </Dropdown>
                         )}
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => setSelectedRoutes("Red")} style={redStyling}>Red</Dropdown.Item>
