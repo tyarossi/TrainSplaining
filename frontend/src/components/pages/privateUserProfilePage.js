@@ -45,11 +45,10 @@ const PrivateUserProfile = () => {
   };
 
   useEffect(() => {
-    setUser(getUserInfo())
-      const obj = getUserInfo(user)
-      setUser(obj)
-      setBgColor(SECONDARY_COLOR);
-      setBgText(PRIMARY_COLOR);
+    const obj = getUserInfo();
+    setUser(obj);
+    setBgColor(SECONDARY_COLOR);
+    setBgText(PRIMARY_COLOR);
   }, []);
 
 

@@ -6,6 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 import ReactNavbar from 'react-bootstrap/Navbar';
 import { TfiAlignJustify } from "react-icons/tfi";
+import { CgProfile } from "react-icons/cg";
 
 const PRIMARY_COLOR = "#D6D6D6";
 const SECONDARY_COLOR = '#404040';
@@ -38,13 +39,13 @@ export default function Navbar() {
   // it seems.
   return (
     <ReactNavbar bg="dark" variant="dark">
-    <Container>
-      <Nav className="me-auto">
-        <NavDropdown title={<TfiAlignJustify size={30} />} >
+    <Container style={{ display: "flex", justifyContent: "space-between" }}>
+      <Nav className="me-auto" style={{ display: "flex", justifyContent: "space-between" }}>
+        <NavDropdown title={<TfiAlignJustify size={30} />} style={{ display: "flex", justifyContent: "space-between" }}>
           <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
           <NavDropdown.Item href="/wallet">Ticket Wallet</NavDropdown.Item>
           <NavDropdown.Item href="/mbtaSchedule">Schedule</NavDropdown.Item>
-          <NavDropdown.Item href="/privateUserProfile">Profile</NavDropdown.Item>
+          <NavDropdown.Item href="/privateUserProfile">{<CgProfile />}Profile</NavDropdown.Item>
         {/* <Nav.Link href="/TailwindConnect  ionTest">Tailwind Connection Test</Nav.Link> */}
         </NavDropdown>
       </Nav>
