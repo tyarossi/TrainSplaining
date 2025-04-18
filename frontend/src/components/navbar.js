@@ -38,14 +38,15 @@ export default function Navbar() {
   // we have an issue with getUserInfo() returning null after a few minutes
   // it seems.
   return (
-    <ReactNavbar bg="dark" variant="dark">
+    <ReactNavbar bg="dark" variant="dark" style={realStyling}>
     <Container style={{ display: "flex", justifyContent: "space-between" }}>
       <Nav className="me-auto" style={{ display: "flex", justifyContent: "space-between" }}>
         <NavDropdown title={<TfiAlignJustify size={30} />} style={{ display: "flex", justifyContent: "space-between" }}>
-          <NavDropdown.Item href="/privateUserProfile">Purchase Tickets</NavDropdown.Item>
-          <NavDropdown.Item href="/wallet">Ticket Wallet</NavDropdown.Item>
-          <NavDropdown.Item href="/mbtaSchedule">Schedule</NavDropdown.Item>
-          <NavDropdown.Item href="/privateUserProfile">{<CgProfile />}Profile</NavDropdown.Item>
+          <NavDropdown.Item href="/privateUserProfile" style={realStyling}>Purchase Tickets</NavDropdown.Item>
+          <NavDropdown.Item href="/wallet" style={realStyling}>Ticket Wallet</NavDropdown.Item>
+          <NavDropdown.Item href="/mbtaSchedule" style={realStyling}>Schedule</NavDropdown.Item>
+          <NavDropdown.Item href="/mbtaAlerts" style={realStyling}>Alerts</NavDropdown.Item>
+          <NavDropdown.Item href="/privateUserProfile" style={realStyling}>{<CgProfile />}Profile</NavDropdown.Item>
         {/* <Nav.Link href="/TailwindConnect  ionTest">Tailwind Connection Test</Nav.Link> */}
         </NavDropdown>
       </Nav>

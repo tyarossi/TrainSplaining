@@ -135,7 +135,7 @@ const Login = () => {
                 >
                   Log In
                 </Button>
-                <Button // THIS BUTTON WILL GO TO SCHEDULE PAGE
+                {/* <Button // THIS BUTTON WILL GO TO SCHEDULE PAGE
                   variant="primary"
                   type="submit"
                   onClick={handleSubmit}
@@ -143,7 +143,7 @@ const Login = () => {
                   className='mt-2'
                 >
                   Log In as Guest
-                </Button>
+                </Button> */}
               </Form>
             </div>
           </div>

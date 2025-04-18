@@ -55,7 +55,7 @@ const PrivateUserProfile = () => {
 
   // 	<span><b>{<FollowerCount username = {username}/>}</b></span>&nbsp;
   // <span><b>{<FollowingCount username = {username}/>}</b></span>;
-  if (!user) return (<div><h4>Log in to view this page.</h4></div>)
+  if (!user) return (window.location.replace("http://localhost:8081/"))
   return (
     <>
       <section className="vh-100" style={testStyling}>
