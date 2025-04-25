@@ -14,6 +14,7 @@ import Wallet from "./components/pages/walletPage"
 import Stops from "./components/pages/mbtaSchedule";
 import { createContext, useState, useEffect } from "react";
 import getUserInfo from "./utilities/decodeJwt";
+import MbtaAlerts from "./components/pages/mbtaAlerts";
 
 export const UserContext = createContext();
 //test change
@@ -38,7 +39,7 @@ const App = () => {
           <Route exact path="/wallet" element={<Wallet />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
           <Route path="/DatabaseConnectionTest" element={<LandingPage />} />
-
+          <Route path="/mbtaAlerts" element={<MbtaAlerts />} />
         </Routes>
       </UserContext.Provider>
     </>  

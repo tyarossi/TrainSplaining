@@ -57,6 +57,7 @@ const Wallet = () => {
     //     fetchTickets();
     // }, []);
 
+    if (!user) return (window.location.replace("http://localhost:8081/"))
     return (
         <>
             <section className="vh-100" style={testStyling}>
