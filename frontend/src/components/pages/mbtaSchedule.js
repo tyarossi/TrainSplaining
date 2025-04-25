@@ -173,7 +173,6 @@ function MBTASchedule(){
                         <Card.Text style={realStyling}>
                         
                         Arrival: {new Date(stop.attributes.arrival_time).toLocaleString() || "Not Available"}<br/>
-                        Departure: {new Date(stop.attributes.departure_time).toLocaleString() || "Not Available"}
                         </Card.Text>
                     </Card.Body>
                 </Card>
