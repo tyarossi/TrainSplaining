@@ -49,4 +49,30 @@ Content-Type: application/json
 }
 
 ###
-POST  http://localhost:8081/user/deleteAll
+POST http://localhost:8096/api/tickets
+Content-Type: application/json
+
+{
+  "user": "test1235",
+  "line": "Red Line",
+  "departure": "Alewife",
+  "arrival": "South Station",
+}
+####
+DELETE http://localhost:8096/api/tickets
+Content-Type: application/json
+
+{
+  "userId": "test1235",
+  "line": "Red Line",
+  "departure": "Alewife",
+  "arrival": "South Station",
+}
+####
+UPDATE http://localhost:8096/api/tickets
+{
+  "userId": "test1235",
+  "line": "Red Line",
+  "departure": "Alewife",
+  "arrival": "South Station",
+}
