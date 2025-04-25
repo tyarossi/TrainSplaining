@@ -171,8 +171,8 @@ function MBTASchedule(){
                     <Card.Body style={realStyling}>
                         <Card.Title style={realStyling}>Line Arrival and Departure Times</Card.Title>
                         <Card.Text style={realStyling}>
-                            Arrival: {stop.attributes.arrival_time || "Not Available"}<br/>
-                            Departure: {stop.attributes.departure_time || "Not Available"}
+                        Arrival: {Date(stop.attributes.arrival_time).toLocaleString("en-US", { timeZone: "America/New_York" }) || "Not Available"}<br/>
+                        Departure: {Date(stop.attributes.departure_time).toLocaleString("en-US", { timeZone: "America/New_York" }) || "Not Available"}
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -190,3 +190,6 @@ function MBTASchedule(){
 
 }
 export default MBTASchedule;
+
+
+//test git pull and push line
