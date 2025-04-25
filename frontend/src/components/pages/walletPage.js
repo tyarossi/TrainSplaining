@@ -1,4 +1,4 @@
-import Box from 'react-bootstrap/Stack';
+
 import getUserInfo from "../../utilities/decodeJwt";
 import React, { useState, useEffect } from 'react';
 import Ticket from "../Ticket";
@@ -6,13 +6,10 @@ import Ticket from "../Ticket";
 
 const PRIMARY_COLOR = "#D6D6D6";
 const SECONDARY_COLOR = '#404040';
-const BUTTON_COLOR = '#80276C';
 
 const Wallet = () => {
     const [user, setUser] = useState({})
     const [bgColor, setBgColor] = useState(SECONDARY_COLOR);
-    const [bgText, setBgText] = useState(PRIMARY_COLOR);
-
     const ticketCount = 2; // You can change this dynamically
     const tickets = Array.from({ length: ticketCount });
 
@@ -38,7 +35,6 @@ const Wallet = () => {
     const obj = getUserInfo();
     setUser(obj);
     setBgColor(SECONDARY_COLOR);
-    setBgText(PRIMARY_COLOR);
     }, []);
 
 
