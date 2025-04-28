@@ -65,9 +65,19 @@ function MBTASchedule(){
                 const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
                 const stopFilter = selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : "";
                 const result = await axios(
-                    `https://api-v3.mbta.com/schedules?filter[route]=${route}&filter[date]=${today}${stopFilter}&include=stop`
+                    `https://api-v3.mbta.com/predictions?filter[route]=${selectedRoutes}${selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : ""}&include=stop`
                 );
-                setStops(result.data.data);
+                const includedStops = result.data.included?.reduce((acc, stop) => {
+                    acc[stop.id] = stop.attributes.name;
+                    return acc;
+                }, {});
+    
+                const predictionsWithStopNames = result.data.data.map(prediction => ({
+                    ...prediction,
+                    stopName: includedStops?.[prediction.relationships.stop.data.id] || "Unknown Stop",
+                }));
+    
+                setStops(predictionsWithStopNames);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -151,12 +161,12 @@ function MBTASchedule(){
             </Dropdown>
             }
 
-            {///<div style={{ marginTop: "20px", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
-                //<h3>API Call:</h3>
-               //<p>
-               ///{`https://api-v3.mbta.com/schedules?filter[route]=${selectedRoutes}&filter[date]=${new Date().toISOString().split("T")[0]}${selectedStops !== "All" ? `&filter[stop]=${selectedStops}` : ""}&include=stop`}
-                //</p>
-            //</div>
+            {<div style={{ marginTop: "20px", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
+                <h3>API Call:</h3>
+               <p>
+               {`https://api-v3.mbta.com/predictions?filter[route]=${selectedRoutes}${selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : ""}&include=stop`}
+               </p>
+            </div>
             }
 
             <h1>Route: {selectedRoutes} Line</h1>
@@ -169,10 +179,13 @@ function MBTASchedule(){
                     style = {cardStyling}
                 >
                     <Card.Body style={realStyling}>
-                        <Card.Title style={realStyling}>Line Arrival and Departure Times</Card.Title>
+                        <Card.Title style={realStyling}>Line Prediction</Card.Title>
                         <Card.Text style={realStyling}>
-                            Arrival: {stop.attributes.arrival_time || "Not Available"}<br/>
-                            Departure: {stop.attributes.departure_time || "Not Available"}
+                            Stop: {stop.stopName}<br/>
+                            The train will arrive in {
+                                
+
+                            }
                         </Card.Text>
                     </Card.Body>
                 </Card>
