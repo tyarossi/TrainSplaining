@@ -65,9 +65,19 @@ function MBTASchedule(){
                 const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
                 const stopFilter = selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : "";
                 const result = await axios(
-                    `https://api-v3.mbta.com/schedules?filter[route]=${route}&filter[date]=${today}${stopFilter}&include=stop`
+                    `https://api-v3.mbta.com/predictions?filter[route]=${selectedRoutes}${selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : ""}&include=stop`
                 );
-                setStops(result.data.data);
+                const includedStops = result.data.included?.reduce((acc, stop) => {
+                    acc[stop.id] = stop.attributes.name;
+                    return acc;
+                }, {});
+    
+                const predictionsWithStopNames = result.data.data.map(prediction => ({
+                    ...prediction,
+                    stopName: includedStops?.[prediction.relationships.stop.data.id] || "Unknown Stop",
+                }));
+    
+                setStops(predictionsWithStopNames);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -151,16 +161,51 @@ function MBTASchedule(){
             </Dropdown>
             }
 
-            {///<div style={{ marginTop: "20px", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
-                //<h3>API Call:</h3>
-               //<p>
-               ///{`https://api-v3.mbta.com/schedules?filter[route]=${selectedRoutes}&filter[date]=${new Date().toISOString().split("T")[0]}${selectedStops !== "All" ? `&filter[stop]=${selectedStops}` : ""}&include=stop`}
-                //</p>
-            //</div>
-            }
+            {/* {<div style={{ marginTop: "20px", padding: "10px", background: "#f0f0f0", borderRadius: "5px" }}>
+                <h3>API Call:</h3>
+               <p>
+               {`https://api-v3.mbta.com/predictions?filter[route]=${selectedRoutes}${selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : ""}&include=stop`}
+               </p>
+            </div>
+            } */}
 
             <h1>Route: {selectedRoutes} Line</h1>
-            {Stops.map(stop =>(
+            {Stops.filter(stop => {
+                const millisecondsToMins = 60000;
+                const currTimeInMinutes = Date.now() / millisecondsToMins;
+
+                const arrivalTimeInMinutes = stop.attributes.arrival_time
+                    ? new Date(stop.attributes.arrival_time).getTime() / millisecondsToMins
+                    : null;
+                const departureTimeInMinutes = stop.attributes.departure_time
+                    ? new Date(stop.attributes.departure_time).getTime() / millisecondsToMins
+                    : null;
+
+                return (
+                    (arrivalTimeInMinutes && arrivalTimeInMinutes - currTimeInMinutes > 0) ||
+                    (departureTimeInMinutes && departureTimeInMinutes - currTimeInMinutes > 0)
+                );
+            })
+                .sort((a, b) => {
+                    const millisecondsToMins = 60000;
+                    const currTimeInMinutes = Date.now() / millisecondsToMins;
+                
+                    const aTime = a.attributes.arrival_time
+                        ? new Date(a.attributes.arrival_time).getTime() / millisecondsToMins - currTimeInMinutes
+                        : a.attributes.departure_time
+                        ? new Date(a.attributes.departure_time).getTime() / millisecondsToMins - currTimeInMinutes
+                        : Infinity;
+                
+                    const bTime = b.attributes.arrival_time
+                        ? new Date(b.attributes.arrival_time).getTime() / millisecondsToMins - currTimeInMinutes
+                        : b.attributes.departure_time
+                        ? new Date(b.attributes.departure_time).getTime() / millisecondsToMins - currTimeInMinutes
+                        : Infinity;
+                
+                    return aTime - bTime; // Sort by time difference in ascending order
+                })
+                
+            .map(stop =>(
                 <Card
                     body
                     outline
@@ -169,26 +214,42 @@ function MBTASchedule(){
                     style = {cardStyling}
                 >
                     <Card.Body style={realStyling}>
-                        <Card.Title style={realStyling}>Line Arrival and Departure Times</Card.Title>
+                        <Card.Title style={realStyling}>Line Prediction</Card.Title>
                         <Card.Text style={realStyling}>
+                            Stop: {stop.stopName}<br/>
+                            {
+                                (() => {
+                                    const currTimeInMinutes = Date.now() / 60000;
                         
-                        Arrival: {new Date(stop.attributes.arrival_time).toLocaleString() || "Not Available"}<br/>
+                                    if (stop.attributes.arrival_time) {
+                                        const arrivalTimeDifference = Math.round(
+                                            (new Date(stop.attributes.arrival_time).getTime() / 60000) - currTimeInMinutes
+                                        );
+                                        if (arrivalTimeDifference <= 0) {
+                                            return "Arriving Now";
+                                        }
+                                        return `The train will arrive in ${arrivalTimeDifference} minutes`;
+                                    }
+                        
+                                    if (stop.attributes.departure_time) {
+                                        const departureTimeDifference = Math.round(
+                                            (new Date(stop.attributes.departure_time).getTime() / 60000) - currTimeInMinutes
+                                        );
+                                        if (departureTimeDifference <= 0) {
+                                            return "Arriving Now";
+                                        }
+                                        return `The train will arrive in ${departureTimeDifference} minutes`;
+                                    }
+                        
+                                    return "Not Available";                                })()
+                            }
                         </Card.Text>
                     </Card.Body>
                 </Card>
             ))}
 
-            <h1 style={realStyling}>Stops</h1>
-            {Stops.map(stop => (
-                <div key ={stop.id} style={realStyling}>
-                    <h3 style={realStyling}>Drop Off Type: {stop.attributes.drop_off_type}</h3>
-                    <p style={realStyling}>Stop Sequence: {stop.attributes.stop_sequence}</p>
-                </div>
-            ))}
         </div>
     )
 
 }
 export default MBTASchedule;
-
-// test git push  
