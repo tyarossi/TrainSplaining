@@ -62,8 +62,6 @@ function MBTASchedule(){
     useEffect(() => {
         async function fetchData(route) {
             try {
-                const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
-                const stopFilter = selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : "";
                 const result = await axios(
                     `https://api-v3.mbta.com/predictions?filter[route]=${selectedRoutes}${selectedStops !== "All" ? `&filter[stop]=${selectedStops.id}` : ""}&include=stop`
                 );

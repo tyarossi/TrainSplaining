@@ -16,10 +16,11 @@ const Wallet = () => {
         departure: '',
         arrival: '',
     });
+    const [selectedRoutes, setSelectedRoutes] = useState("Blue");
+    const [allStops, setAllStops] = useState([]);
 
     // Example options for dropdowns
-    const lines = ['Red Line', 'Blue Line', 'Green Line', 'Orange Line', 'Purple Line'];
-    const stations = ['Alewife', 'Davis', 'Porter', 'Harvard', 'Central', 'Kendall/MIT', 'South Station'];
+    const [lines, setLines] = useState(['Red', 'Blue', 'Green-B', 'Green-C', 'Green-D', 'Green-E', 'Orange']);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -39,6 +40,21 @@ const Wallet = () => {
         fetchUser();
         fetchTickets();
     }, [user.id]);
+
+    useEffect(() => {
+            async function fetchStops(route) {
+                try {
+                    const result = await axios(
+                        `https://api-v3.mbta.com/stops?filter[route]=${route}`
+                    );
+                    setAllStops(result.data.data); // Store all stops for the selected route
+                } catch (error) {
+                    console.error("Error fetching stops:", error);
+                }
+            }
+    
+            fetchStops(selectedRoutes); // Fetch stops whenever the selected route changes
+        }, [selectedRoutes]);
 
     const handleCreateTicket = async () => {
         try {
@@ -87,7 +103,10 @@ const Wallet = () => {
                         Line:
                         <select
                             value={newTicket.line}
-                            onChange={(e) => setNewTicket({ ...newTicket, line: e.target.value })}
+                            onChange={(e) => {
+                                setNewTicket({ ...newTicket, line: e.target.value });
+                                setSelectedRoutes(e.target.value);
+                            }}
                         >
                             <option value="" disabled>Select a line</option>
                             {lines.map((line) => (
@@ -103,8 +122,8 @@ const Wallet = () => {
                             onChange={(e) => setNewTicket({ ...newTicket, departure: e.target.value })}
                         >
                             <option value="" disabled>Select a departure station</option>
-                            {stations.map((station) => (
-                                <option key={station} value={station}>{station}</option>
+                            {allStops.map((stop) => (
+                                <option key={stop.id} value={stop.attributes.name}>{stop.attributes.name}</option>
                             ))}
                         </select>
                     </label>
@@ -116,8 +135,8 @@ const Wallet = () => {
                             onChange={(e) => setNewTicket({ ...newTicket, arrival: e.target.value })}
                         >
                             <option value="" disabled>Select an arrival station</option>
-                            {stations.map((station) => (
-                                <option key={station} value={station}>{station}</option>
+                            {allStops.map((stop) => (
+                                <option key={stop.id} value={stop.attributes.name}>{stop.attributes.name}</option>
                             ))}
                         </select>
                     </label>
