@@ -48,28 +48,22 @@ Content-Type: application/json
     "userId" : "634edb2a16710b2cda6fb370"
 }
 
-###
-POST http://localhost:8096/api/tickets
+###create ticket
+POST http://localhost:8096/api/tickets/634edb2a16710b2cda6fb370
 Content-Type: application/json
 
 {
-  "user": "test1235",
+  "userId": "634edb2a16710b2cda6fb370",
   "line": "Red Line",
   "departure": "Alewife",
   "arrival": "South Station",
+  "zone": "Zone 2"
 }
-####
+
+####delete ticket
 DELETE http://localhost:8096/api/tickets
 Content-Type: application/json
 
-{
-  "userId": "test1235",
-  "line": "Red Line",
-  "departure": "Alewife",
-  "arrival": "South Station",
-}
-####
-UPDATE http://localhost:8096/api/tickets
 {
   "userId": "test1235",
   "line": "Red Line",

@@ -1,5 +1,6 @@
+const express = require('express');
 const router = express.Router();
-const Ticket = require('../models/Ticket'); // Import the Ticket model
+const Ticket = require('../models/ticketModel'); // Import the Ticket model
 
 router.delete('/tickets/:id', async (req, res) => {
     try {

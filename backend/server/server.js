@@ -29,7 +29,8 @@ app.use('/user', deleteUser);
 
 // Ticket-related routes
 app.use('/createTicket', createTicket); // Add the tickets routes
-app
+app.use('/deleteTicket', deleteTicket); // Add the delete ticket route
+app.use('/getAllTickets', ticketsRoutes); // Add the get all tickets routes
 
 app.listen(SERVER_PORT, (req, res) => {
     console.log(`The backend service is running on port ${SERVER_PORT} and waiting for requests.`);

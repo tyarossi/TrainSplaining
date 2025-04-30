@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Ticket = require('../models/Ticket'); // Import the Ticket model
+const Ticket = require('../models/ticketModel'); // Import the Ticket model
 
 // Create a new ticket
 router.post('/tickets', async (req, res) => {
