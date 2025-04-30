@@ -9,6 +9,8 @@ const dbConnection = require('./config/db.config');
 const editUser = require('./routes/userEditUser');
 const deleteUser = require('./routes/userDeleteAll');
 const ticketsRoutes = require('./routes/ticketsRoutes'); // Import the tickets routes
+const createTicket = require('./routes/createTicket'); // Import the create ticket route
+const deleteTicket = require('./routes/deleteTicket'); // Import the delete ticket route
 
 require('dotenv').config();
 const SERVER_PORT = 8096;
@@ -26,7 +28,9 @@ app.use('/user', editUser);
 app.use('/user', deleteUser);
 
 // Ticket-related routes
-app.use('/tickets', ticketsRoutes); // Add the tickets routes
+app.use('/createTicket', createTicket); // Add the tickets routes
+app.use('/deleteTicket', deleteTicket); // Add the delete ticket route
+app.use('/getAllTickets', ticketsRoutes); // Add the get all tickets routes
 
 app.listen(SERVER_PORT, (req, res) => {
     console.log(`The backend service is running on port ${SERVER_PORT} and waiting for requests.`);
