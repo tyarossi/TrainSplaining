@@ -141,7 +141,7 @@ const Wallet = () => {
                         </select>
                     </label>
                     <br />
-                    <button onClick={handleCreateTicket}>Submit</button>
+                    <button style={{ marginRight: '150px' }} onClick={handleCreateTicket}>Submit</button>
                     <button onClick={() => setShowPopup(false)}>Cancel</button>
                 </div>
             )}
