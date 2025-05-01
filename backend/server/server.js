@@ -9,7 +9,7 @@ const dbConnection = require('./config/db.config');
 const editUser = require('./routes/userEditUser');
 const deleteUser = require('./routes/userDeleteAll');
 const ticketsRoutes = require('./routes/ticketsRoutes'); // Import the tickets routes
-const createTicket = require('./routes/createTicket'); // Import the create ticket route
+const createTicket = require('./routes/createTicket'); // Import the route
 const deleteTicket = require('./routes/deleteTicket'); // Import the delete ticket route
 
 require('dotenv').config();
@@ -28,7 +28,7 @@ app.use('/user', editUser);
 app.use('/user', deleteUser);
 
 // Ticket-related routes
-app.use('/createTicket', createTicket); // Add the tickets routes
+app.use('/Ticket', createTicket); // Add the tickets routes
 app.use('/deleteTicket', deleteTicket); // Add the delete ticket route
 app.use('/getAllTickets', ticketsRoutes); // Add the get all tickets routes
 

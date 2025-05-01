@@ -7,8 +7,6 @@ Content-Type: application/json
     "password" : "tochi12345"
 }
 
-###
-
 POST http://localhost:8080/user/login
 Content-Type: application/json 
 
@@ -17,11 +15,8 @@ Content-Type: application/json
     "password" : "tochi12345"
 }
 
-###
 GET http://localhost:8081/user/getAll
 Content-Type: application/json
-
-###
 
 POST http://localhost:8081/user/editUser
 Content-Type: application/json 
@@ -32,7 +27,6 @@ Content-Type: application/json
     "password" : "dwwrwr"
 }
 
-###
 GET  http://localhost:8081/user/getUserById
 Content-Type: application/json 
 
@@ -40,7 +34,6 @@ Content-Type: application/json
     "userId" : "635ab8dfc407faf9f73deaf1"
 }
 
-###
 GET  http://localhost:8081/user/getUserById
 Content-Type: application/json 
 
@@ -49,23 +42,22 @@ Content-Type: application/json
 }
 
 ###create ticket
-POST http://localhost:8096/api/tickets/634edb2a16710b2cda6fb370
+POST http://localhost:8096/Tickets/createTickets
 Content-Type: application/json
 
 {
-  "userId": "634edb2a16710b2cda6fb370",
+  "userId": "67d4570975c14b9a98fe2144",
   "line": "Red Line",
   "departure": "Alewife",
   "arrival": "South Station",
-  "zone": "Zone 2"
 }
 
 ####delete ticket
-DELETE http://localhost:8096/api/tickets
+DELETE http://localhost:8096/Tickets/deleteTickets
 Content-Type: application/json
 
 {
-  "userId": "test1235",
+  "userId": "67d4570975c14b9a98fe2144",
   "line": "Red Line",
   "departure": "Alewife",
   "arrival": "South Station",

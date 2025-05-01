@@ -3,19 +3,19 @@ const router = express.Router();
 const Ticket = require('../models/ticketModel'); // Import the Ticket model
 
 // Create a new ticket
-router.post('/tickets', async (req, res) => {
+router.post('/createTickets', async (req, res) => {
     try {
-      const { user, line, departure, arrival } = req.body;
-      if (!user || !line || !departure || !arrival) {
-        return res.status(400).json({ error: 'All fields are required' });
-      }
-      const ticket = new Ticket({ userId, line, departure, arrival });
-      await ticket.save();
-      res.status(201).json(ticket);
+        const { userId, line, departure, arrival} = req.body; // Extract fields from the request body
+        if (!userId || !line || !departure || !arrival) {
+            return res.status(400).json({ error: 'All fields are required' }); // Validation error
+        }
+        const ticket = new Ticket({ userId, line, departure, arrival}); // Create a new ticket
+        await ticket.save();
+        res.status(201).json(ticket); // Respond with the created ticket
     } catch (error) {
-      console.error('Error creating ticket:', error);
-      res.status(500).json({ error: 'Failed to create ticket' });
+        console.error('Error creating ticket:', error);
+        res.status(500).json({ error: 'Failed to create ticket' }); // Internal server error
     }
-  });
+});
 
-  module.exports = router;
+module.exports = router;
