@@ -1,0 +1,44 @@
+.Navbar {
+    background-color: #404040;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.sideScrollerAlerts {
+    overflow: hidden; 
+    white-space: nowrap; 
+    height: 30px; 
+    width: 95%; 
+    margin-left: 20px;
+    position: relative;
+    color: #D6D6D6;
+}
+
+.alerts {
+    display: inline-block; 
+    animation: scroll 60s linear infinite; 
+}
+
+.alertText {
+    display: inline-block; 
+    margin-right: 50px; 
+    font-size: 16px;
+    color: #D6D6D6; 
+    white-space: nowrap; 
+    line-height: 30px; 
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(30%); 
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
