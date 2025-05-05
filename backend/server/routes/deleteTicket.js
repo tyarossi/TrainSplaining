@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Ticket = require('../models/ticketModel'); // Import the Ticket model
 
-router.delete('/tickets/:id', async (req, res) => {
+router.delete('/deleteTickets/:id', async (req, res) => {
     try {
       const { id } = req.params;
       await Ticket.findByIdAndDelete(id);
