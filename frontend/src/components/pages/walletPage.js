@@ -33,7 +33,7 @@ const Wallet = () => {
                 const response = await axios.get(`http://localhost:8096/Ticket/tickets/${user.id}`);
                 setTickets(response.data);
             } catch (err) {
-                setError('Failed to fetch tickets. Please buy a ticket.');
+                setError('');
             }
         };
 
