@@ -5,6 +5,27 @@ import getUserInfo from "../../utilities/decodeJwt";
 
 const PRIMARY_COLOR = "#D6D6D6";
 const SECONDARY_COLOR = '#404040';
+const BUTTON_COLOR = '#80276C';
+
+
+let realStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: SECONDARY_COLOR,
+};
+let buttonStyling = {
+    background: BUTTON_COLOR,
+    borderStyle: "none",
+    color: '#FFFFFF',
+};
+let cardStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: SECONDARY_COLOR,
+    width: "35rem",
+};
 
 const Wallet = () => {
     const [user, setUser] = useState({});
@@ -75,10 +96,10 @@ const Wallet = () => {
     }
 
     return (
-        <div>
+        <div style={realStyling}>
             <h3>Wallet</h3>
             {error && <p>{error}</p>}
-            <button onClick={() => setShowPopup(true)}>Create New Ticket</button> {/* Button to open popup */}
+            <button onClick={() => setShowPopup(true)} style={realStyling}>Create New Ticket</button> {/* Button to open popup */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', padding: '20px' }}>
                 {tickets.map((ticket) => (
                     <Ticket key={ticket.id} {...ticket} />
@@ -88,21 +109,23 @@ const Wallet = () => {
             {/* Popup for creating a new ticket */}
             {showPopup && (
                 <div style={{
+                    color: PRIMARY_COLOR,
                     position: 'fixed',
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    backgroundColor: 'white',
+                    backgroundColor: SECONDARY_COLOR,
                     padding: '20px',
                     border: '1px solid #ccc',
                     borderRadius: '8px',
                     zIndex: 1000
                 }}>
-                    <h4>Create New Ticket</h4>
-                    <label>
+                    <h4 style={realStyling}>Create New Ticket</h4>
+                    <label style={realStyling}>
                         Line:
                         <select
                             value={newTicket.line}
+                            style={realStyling}
                             onChange={(e) => {
                                 setNewTicket({ ...newTicket, line: e.target.value });
                                 setSelectedRoutes(e.target.value);
@@ -119,6 +142,7 @@ const Wallet = () => {
                         Departure:
                         <select
                             value={newTicket.departure}
+                            style={realStyling}
                             onChange={(e) => setNewTicket({ ...newTicket, departure: e.target.value })}
                         >
                             <option value="" disabled>Select a departure station</option>
@@ -132,6 +156,7 @@ const Wallet = () => {
                         Arrival:
                         <select
                             value={newTicket.arrival}
+                            style={realStyling}
                             onChange={(e) => setNewTicket({ ...newTicket, arrival: e.target.value })}
                         >
                             <option value="" disabled>Select an arrival station</option>
@@ -148,5 +173,6 @@ const Wallet = () => {
         </div>
     );
 };
+
 
 export default Wallet;
