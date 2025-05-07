@@ -52,6 +52,9 @@ const Wallet = () => {
         const fetchTickets = async () => {
             try {
                 const response = await axios.get(`http://localhost:8096/Ticket/tickets/${user.id}`);
+                if (response.status !== 200) {
+                    throw new Error('Failed to fetch tickets, please create a ticket first');
+                }
                 setTickets(response.data);
             } catch (err) {
                 setError('');
@@ -98,6 +101,7 @@ const Wallet = () => {
     return (
         <div style={realStyling}>
             <h3>Wallet</h3>
+            <h4 style={realStyling}>Welcome, {user.username}:{user.id}</h4>
             {error && <p>{error}</p>}
             <button onClick={() => setShowPopup(true)} style={realStyling}>Create New Ticket</button> {/* Button to open popup */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', padding: '20px' }}>

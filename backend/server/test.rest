@@ -42,28 +42,23 @@ Content-Type: application/json
 }
 
 ###create ticket
-POST http://localhost:8096/Ticket/createTickets
+POST http://localhost:8096/Tickets/createTickets
 Content-Type: application/json
 
 {
   "userId": "67d4570975c14b9a98fe2144",
   "line": "Red Line",
   "departure": "Alewife",
-  "arrival": "South Station"
+  "arrival": "South Station",
 }
 
 ####delete ticket
-DELETE http://localhost:8096/Ticket/deleteTickets/6818d1955dd44539b3bb38f6
+DELETE http://localhost:8096/Tickets/deleteTickets
 Content-Type: application/json
 
-# {
-#   "userId": "67d4570975c14b9a98fe2144",
-#   "line": "Red Line",
-#   "departure": "Alewife",
-#   "arrival": "South Station"
-# }
-
-
-#### get all tickets for user
-GET http://localhost:8096/Ticket/tickets/67d4570975c14b9a98fe2144
-Content-Type: application/json
+{
+  "userId": "67d4570975c14b9a98fe2144",
+  "line": "Red Line",
+  "departure": "Alewife",
+  "arrival": "South Station",
+}
