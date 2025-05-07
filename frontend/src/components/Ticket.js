@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import axios from 'axios';
+
 
 const PRIMARY_COLOR = "#D6D6D6";
 const SECONDARY_COLOR = '#404040';
@@ -24,12 +26,22 @@ let cardStyling = {
     width: "35rem",
 };
 
+
 const MbtaTicket = (props) => {
   let ticketID = props.ticketID;
   let line = props.line;
   let departure = props.departure;
   let arrival = props.arrival;
   let datePurchased = props.datePurchased;
+
+  const handleDeleteTicket = async () => {
+    try {
+        const response = await axios.post(`http://localhost:8096/Ticket/deleteTickets/${ticketID}}`);
+        
+    } catch (err) {
+        alert('Failed to delete ticket.');
+    }
+  };
 
 
   const [isActivated, setIsActivated] = useState(false);
@@ -57,9 +69,7 @@ const MbtaTicket = (props) => {
           setTimeLeft(-1); // Remove the component after the animation
 
           // DELETE ticket id info from database
-          //////////////////////////////////////
-          ////////////////////////////////////
-          ////////////////////////////////////////
+          handleDeleteTicket();
         }
       }, 100); // Adjust the interval for smoother animation
     }
@@ -98,7 +108,7 @@ const MbtaTicket = (props) => {
   return (
     <div style={ticketStyle}>
       <div style={{ fontSize: '1.25rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '12px', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR }}>
-        {line} Ticket
+        {line} Line Ticket
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>From:</span>
