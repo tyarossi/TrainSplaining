@@ -51,7 +51,7 @@ const Wallet = () => {
 
         const fetchTickets = async () => {
             try {
-                const response = await axios.get(`/api/tickets/${user.id}`);
+                const response = await axios.get(`http://localhost:8096/Ticket/tickets/${user.id}`);
                 setTickets(response.data);
             } catch (err) {
                 setError('Failed to fetch tickets. Please buy a ticket.');
@@ -79,7 +79,7 @@ const Wallet = () => {
 
     const handleCreateTicket = async () => {
         try {
-            const response = await axios.post('/api/tickets', {
+            const response = await axios.post(`http://localhost:8096/Ticket/createTickets`, {
                 userId: user.id,
                 ...newTicket
             });
