@@ -102,7 +102,7 @@ const Wallet = () => {
             <button onClick={() => setShowPopup(true)} style={realStyling}>Create New Ticket</button> {/* Button to open popup */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', padding: '20px' }}>
                 {tickets.map((ticket) => (
-                    <Ticket key={ticket.id} {...ticket} />
+                    <Ticket key={ticket.id} {...ticket} line={ticket.line} departure={ticket.departure} arrival={ticket.arrival} datePurchased={ticket.datePurchased}/>
                 ))}
             </div>
 

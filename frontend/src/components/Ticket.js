@@ -24,7 +24,14 @@ let cardStyling = {
     width: "35rem",
 };
 
-const MbtaTicket = () => {
+const MbtaTicket = (props) => {
+  let ticketID = props.ticketID;
+  let line = props.line;
+  let departure = props.departure;
+  let arrival = props.arrival;
+  let datePurchased = props.datePurchased;
+
+
   const [isActivated, setIsActivated] = useState(false);
   const [timeLeft, setTimeLeft] = useState(5 * 1); // 20 minutes in seconds
   const [isExploding, setIsExploding] = useState(false);
@@ -48,6 +55,11 @@ const MbtaTicket = () => {
         if (opacity <= 0) {
           clearInterval(explosionInterval);
           setTimeLeft(-1); // Remove the component after the animation
+
+          // DELETE ticket id info from database
+          //////////////////////////////////////
+          ////////////////////////////////////
+          ////////////////////////////////////////
         }
       }, 100); // Adjust the interval for smoother animation
     }
@@ -86,28 +98,21 @@ const MbtaTicket = () => {
   return (
     <div style={ticketStyle}>
       <div style={{ fontSize: '1.25rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '12px', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR }}>
-        MBTA Commuter Rail
+        {line} Ticket
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>From:</span>
-        <span>Salem</span>
+        <span>{departure}</span>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>To:</span>
-        <span>North Station</span>
+        <span>{arrival}</span>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
-        <span>Date:</span>
-        <span>Apr 20, 2025</span>
+        <span>Date Purchased:</span>
+        <span>{new Date(datePurchased).toLocaleString()}</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
-        <span>Time:</span>
-        <span>7:35 AM</span>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
-        <span>Zone:</span>
-        <span>Zone 3</span>
-      </div>
+
       {isActivated && (
         <div style={{ textAlign: 'center', margin: '10px 0', fontSize: '1rem' }}>
           Time Left: {formatTime(timeLeft)}
