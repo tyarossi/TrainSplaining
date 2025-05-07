@@ -1,6 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
+const PRIMARY_COLOR = "#D6D6D6";
+const SECONDARY_COLOR = '#404040';
+const BUTTON_COLOR = '#80276C';
+
+let realStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: SECONDARY_COLOR,
+};
+let buttonStyling = {
+    background: BUTTON_COLOR,
+    borderStyle: "none",
+    color: '#FFFFFF',
+};
+let cardStyling = {
+    color: PRIMARY_COLOR,
+    fontWeight: "bold",
+    textDecoration: "none",
+    background: SECONDARY_COLOR,
+    width: "35rem",
+};
+
 const MbtaTicket = () => {
   const [isActivated, setIsActivated] = useState(false);
   const [timeLeft, setTimeLeft] = useState(5 * 1); // 20 minutes in seconds
@@ -42,12 +65,13 @@ const MbtaTicket = () => {
   }
 
   const ticketStyle = {
+    color: PRIMARY_COLOR,
     border: '1px solid #555',
     borderRadius: '8px',
     padding: '16px',
     width: '320px',
     margin: '20px auto',
-    backgroundColor: isActivated ? '#800080' : '#fff', // Change background color when activated
+    backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR, // Change background color when activated
     fontFamily: 'Arial, sans-serif',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     color: isActivated ? '#fff' : 'black', // Adjust text color for contrast
@@ -61,26 +85,26 @@ const MbtaTicket = () => {
 
   return (
     <div style={ticketStyle}>
-      <div style={{ fontSize: '1.25rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '12px' }}>
+      <div style={{ fontSize: '1.25rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '12px', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR }}>
         MBTA Commuter Rail
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>From:</span>
         <span>Salem</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>To:</span>
         <span>North Station</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>Date:</span>
         <span>Apr 20, 2025</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>Time:</span>
         <span>7:35 AM</span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0', fontSize: '0.95rem', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         <span>Zone:</span>
         <span>Zone 3</span>
       </div>
@@ -89,15 +113,15 @@ const MbtaTicket = () => {
           Time Left: {formatTime(timeLeft)}
         </div>
       )}
-      <div style={{ borderTop: '1px dashed #ccc', marginTop: '14px', paddingTop: '10px', fontSize: '0.8rem', textAlign: 'center' }}>
+      <div style={{ borderTop: '1px dashed #ccc', marginTop: '14px', paddingTop: '10px', fontSize: '0.8rem', textAlign: 'center', color: PRIMARY_COLOR, backgroundColor: isActivated ? BUTTON_COLOR : SECONDARY_COLOR  }}>
         Valid for one-way trip only • Must present on request <br />
         <Button
           onClick={handleActivate}
           disabled={isActivated}
           style={{
-            backgroundColor: isActivated ? '#ccc' : '',
-            borderColor: isActivated ? '#ccc' : '',
-            color: isActivated ? '#666' : '',
+            backgroundColor: isActivated ? BUTTON_COLOR : BUTTON_COLOR,
+            borderColor: isActivated ? BUTTON_COLOR : BUTTON_COLOR,
+            color: isActivated ? PRIMARY_COLOR : PRIMARY_COLOR,
           }}
         >
           {isActivated ? 'Activated' : 'Activate'}
